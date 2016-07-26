@@ -1,0 +1,85 @@
+\documentclass{nthuthesis}
+
+\usepackage{times}
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{wallpaper} 
+\usepackage{cite}
+\usepackage{caption}
+
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{hhline}
+\usepackage{rotating}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+
+% declare the path(s) where your graphic files are
+\graphicspath{{./figsrc/}}
+% and their extensions so you won't have to specify these with
+% every instance of \includegraphics
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+
+% Using the tex-text mapping for ligatures etc.
+\defaultfontfeatures{Mapping=tex-text}
+
+% Set the default fonts
+
+% English font
+% Note: please refer to 'fc-list :outline -f "%{family}\n"' for choosing a valid font name
+\setmainfont{Times New Roman}
+
+% Chinese font
+% Note: please refer to 'fc-list :outline -f "%{family}\n"' for choosing a valid font name
+\setCJKmainfont[AutoFakeBold=3,AutoFakeSlant=.4]{Kaiti TC}
+\defaultCJKfontfeatures{AutoFakeBold=6,AutoFakeSlant=.4}
+
+\ifdefined\withwatermark
+  \CenterWallPaper{0.5}{watermark.pdf}
+\fi
+
+% Your information goes here
+\input{nthuvars}
+
+\begin{document}
+
+\frontmatter
+
+\makecover
+\makecopyright
+
+\input{acknowledgements}
+\input{abstract}
+
+{\singlespacing
+\tableofcontents
+\listoffigures
+\listoftables
+}
+
+\mainmatter
+
+% Your thesis goes here
+\input{introduction}
+\input{omr-overview}
+% \input{discussion}
+% \input{conclusion}
+
+\appendix
+
+\backmatter
+
+\renewcommand{\bibname}{References}
+\addcontentsline{toc}{chapter}{\bibname}
+\bibliographystyle{ieeetr}
+
+% Your bibliography goes here
+{\singlespacing
+\bibliography{thesis}
+}
+
+\end{document}

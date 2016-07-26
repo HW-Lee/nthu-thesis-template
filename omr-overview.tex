@@ -1,0 +1,48 @@
+\chapter{Overview of OMR}
+\label{c:overveiw-of-omr}
+
+In this section, previous works of OMR are mentioned. Preprocessing (binarization, staff profiling, staff detection, and staff removal) and recognition (symbol segmentation, symbol classification) are included. 
+
+\section{Binarization}
+
+\if 0
+\bibliography{thesis}
+\graphicspath{{./figsrc/}}
+\fi
+
+In recognition of printed scores, the color information, namely R/G/B or R/G/B/A vectors, is not useful. Instead, only the intensity information is considered for recognition, so gray-scaled images are always used as the raw input. Furthermore, people always determine if each pixel is background (white) or foreground (black) in advance, and hence the binarization is included in most applications of OMR.
+
+In Pinto's research~\cite{Pinto:2011:MSB}, two kinds of binarization methods were introduced depending on whether the binarization threshold is locally adjustable. The simplest way is applying a constant threshold to all pixels in the image, which is called \emph{global thresholding}. The global threshold can be obtained by finding a value that maximizes the variance~\cite{Otsu:1979:ATSMfGLH} between foreground and background pixels, preserves the most edge information~\cite{Chen:2008:ADTIBMboED}, or maximizes the similarity between the binarized image and the original image~\cite{Huang:1995:ITbMtMoF,Tsai:1995:AFTSPfMaUH}. However, it cannot be expected that the intensity in different small regions is constant over the document, and a constant threshold might not work at a different intensity level. In particular, near the boundary of a page in a book, the image might show a gradient-like difference in terms of the average intensity as compared to the region far from the book spine (Fig.~\ref{fig:bookspine}). To deal with such situations, the choice of the threshold should be determined by local information (nearby pixels)~\cite{Bernsen:2005:DToGLI}, which is called \emph{local thresholding}. In general, global thresholding is easier to be implemented, while local thresholding is more adaptive and robust.
+
+\begin{figure}[ht]
+    \includegraphics[width=\textwidth]{bookspine}
+    \caption{Example of the gray-scale image near the book spine\label{fig:bookspine}.}
+\end{figure}
+
+\section{Staff Detection and Removal}
+
+Dalitz et al.~\cite{Dalitz:2008:CSoSRA} introduced a systematic way for testing the staff removal algorithms. A dataset was generated from a set of ideal score images with the deformation methods listed in Table.~\ref{table:deformation}. The deformation algorithms and the CVC-MUSCIMA dataset are made openly available by Forns et al.~\cite{Forns:2012:CVC-MUSCIMA}.
+
+\begin{table}[ht]
+    \hspace{-.5in}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        {\bf Deformation} & {\bf Type} & {\bf Parameter Description} \\
+        \hline
+        Curvature & deterministic & height/width ratio of sine curve \\
+        \hline
+        Typeset Emulation & both & \parbox[c]{9cm}{gap width, maximal height and variance of vertical shift} \\
+        \hline
+        Line Interruptions & random & \parbox[c]{9cm}{interruption frequency, maximal width and variance of gap width} \\
+        \hline
+        Thickness Variation & random & \parbox[c]{9cm}{Markov chain stationary distribution and inertia factor} \\
+        \hline
+        $y$-variation & random & \parbox[c]{9cm}{Markov chain stationary distribution and inertia factor} \\
+        \hline
+        Degradation & random & \parbox[c]{9cm}{emulating local distortions suggested by Kanungo et al.~\cite{Kanungo:2000:Degradation}} \\
+        \hline
+        White Speckles & random & \parbox[c]{9cm}{speckle frequency, random walk length and smoothing factor} \\
+        \hline
+    \end{tabular}
+    \caption{Deformation Methods\label{table:deformation}.}
+\end{table}
