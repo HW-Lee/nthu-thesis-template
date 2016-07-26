@@ -1,10 +1,10 @@
 # 國立清華大學碩博士論文 XeLaTeX 模板
 
 ## 前言
-本模板改寫自 [Tz-Huan Huang](http://www.csie.ntu.edu.tw/~tzhuan/www/ "title" target="_blank") 撰寫的 [臺灣大學碩博士論文 XeLaTeX 模版](https://github.com/tzhuan/ntu-thesis "title" target="_blank")，使此模板適用於清大碩博士論文。（目前針對電機所系統組適用，其他系所可能得額外詢問）
+本模板改寫自 [Tz-Huan Huang](http://www.csie.ntu.edu.tw/~tzhuan/www/) 撰寫的 [臺灣大學碩博士論文 XeLaTeX 模版](https://github.com/tzhuan/ntu-thesis)，使此模板適用於清大碩博士論文。（目前針對電機所系統組適用，其他系所可能得額外詢問）
 
 ## 說明
-請參考原作者所提供之 [wiki](https://github.com/tzhuan/ntu-thesis/wiki "title" target="_blank") 文件。
+請參考原作者所提供之 [wiki](https://github.com/tzhuan/ntu-thesis/wiki) 文件。
 
 ## 範本架構
 
@@ -63,7 +63,8 @@
 
 * 模板 `nthuthesis.cls`
 
-	調整封面頁 `\makecover` 以及新增授權頁 `\makecopyright`。
+	調整封面頁 `\makecover` 以及新增授權頁 `\makecopyright`。封面如下：
+	![](./coverpage-sample.png)
 
 * 浮水印直接放置在 `./figsrc/watermark.pdf`
 
